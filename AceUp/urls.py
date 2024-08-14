@@ -22,5 +22,8 @@ urlpatterns = [
     path('',views.landing,name ="landing"),
     path('displayNotes/',views.displayNotes,name ="display"),
     path('addnotes/',views.noteEntry,name ="upload"),
+    path("displayTesti/", views.displayTesti, name = "displayTesti"),
+    path("testEntry/", views.testEntry, name = "testEntry"),
+    path("contactus/",views.contact,name = "contact"),
     path('reader/<int:pk>/',views.reader,name='reader'),
 ]

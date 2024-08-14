@@ -26,6 +26,8 @@ def noteEntry(request):
 
 def displayNotes(request):
      note = notes.objects.all()
+     return render(request , "notes.html",{"notes":note})
+     note = notes.objects.all()
     #  print(notesa)
      return render(request , "notes.html",{"notes":note})
 
@@ -41,3 +43,56 @@ def reader(request,pk):
 
         
 
+def testEntry(request):   
+    if request.method == "POST" :
+        title = request.POST.get("title")
+        testi = request.POST.get("description")
+        git = request.POST.get("github")
+        linkedin = request.POST.get("linkedin")
+        image = request.FILES.get("photo")
+
+        if title and testi and git and linkedin and image:
+            a = testimonial.objects.create (
+            title = title,
+            testi = testi,
+            git =git,
+            linkdin =linkedin,
+             image = image )
+            a.save()
+        else:
+            return HttpResponse("Please fill all fields")
+    return render(request, 'testEntry.html')
+
+def displayTesti(request):
+    testi = testimonial.objects.all()
+    return render(request , "showTesti.html",{"testi":testi})
+
+def contact(request):
+    return render(request,'contact.html')
+
+def testEntry(request):   
+    if request.method == "POST" :
+        title = request.POST.get("title")
+        testi = request.POST.get("description")
+        git = request.POST.get("github")
+        linkedin = request.POST.get("linkedin")
+        image = request.FILES.get("photo")
+
+        if title and testi and git and linkedin and image:
+            a = testimonial.objects.create (
+            title = title,
+            testi = testi,
+            git =git,
+            linkdin =linkedin,
+             image = image )
+            a.save()
+        else:
+            return HttpResponse("Please fill all fields")
+    return render(request, 'testEntry.html')
+
+def displayTesti(request):
+    testi = testimonial.objects.all()
+    return render(request , "showTesti.html",{"testi":testi})
+
+def contact(request):
+    return render(request,'contact.html')
