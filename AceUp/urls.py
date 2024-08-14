@@ -20,5 +20,6 @@ from user import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.landing,name ="landing"),
-    
+    path('displayNotes/',views.displayNotes,name ="display"),
+    path('addnotes/',views.noteEntry,name ="upload"),
 ]

@@ -3,7 +3,7 @@ from .models import*
 
 # Create your views here.
 def landing(request):
-    return render(request, 'landing.html')
+    return render(request, 'index.html')
 
 def noteEntry(request):
     if request.method == "POST" :
@@ -20,7 +20,7 @@ def noteEntry(request):
             n.save()
         else:
             return HttpResponse("Please fill all fields")
-        return render(request, 'noteEntry.html')
+    return render(request, 'noteEntry.html')
     
 
 def displayNotes(request):
