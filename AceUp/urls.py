@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from user import views
 from admin.views import *
+from learnGpt.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.landing,name ="landing"),
@@ -26,4 +27,5 @@ urlpatterns = [
     path("testEntry/", testEntry, name = "testEntry"),
     path("contactus/",views.contact,name = "contact"),
     path('reader/<int:pk>/',views.reader,name='reader'),
+    path('gen/', gen , name = 'gen'),
 ]

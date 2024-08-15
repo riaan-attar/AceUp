@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Answer from Notes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group textarea {
+            height: 100px;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .response {
+            margin-top: 20px;
+            white-space: pre-wrap;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .back-link a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <h1>Generate Answer from Notes</h1>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required>
+        </div>
+        <div class="form-group">
+            <label for="year">Year:</label>
+            <input type="number" id="year" name="year" required>
+        </div>
+        <div class="form-group">
+            <label for="question">Question:</label>
+            <textarea id="question" name="question" required></textarea>
+        </div>
+        <button type="submit" class="btn">Generate Response</button>
+    </form>
+
+    {% if generated_text %}
+        <p class="label">Subject:</p>
+        <p>{{ subject }}</p>
+
+        <p class="label">Year:</p>
+        <p>{{ year }}</p>
+
+        <p class="label">Question:</p>
+        <p>{{ question }}</p>
+
+        <p class="label">Generated Text:</p>
+        <div class="response">
+            {{ generated_text }}
+        </div>
+    {% elif error %}
+        <div class="error">
+            <p>Error: {{ error }}</p>
+        </div>
+    {% endif %}
+    
+    <div class="back-link">
+        <a href="{% url 'landing' %}">Go Back</a>
+    </div>
+</div>
+
+</body>
+</html>
