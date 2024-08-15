@@ -41,58 +41,32 @@ def reader(request,pk):
     return render(request,'reader.html',{"file":file_l})
 
 
+def displayTesti(request):
+    testi = testimonial.objects.all()
+    return render(request , "testimonials.html",{"testi":testi})
+
+
+def testEntry(request):   
+    if request.method == "POST" :
+        name = request.POST.get("title")
+        testi = request.POST.get("description")
+        git = request.POST.get("github")
+        linkedin = request.POST.get("linkedin")
+        image = request.FILES.get("photo")
         
-
-def testEntry(request):   
-    if request.method == "POST" :
-        title = request.POST.get("title")
-        testi = request.POST.get("description")
-        git = request.POST.get("github")
-        linkedin = request.POST.get("linkedin")
-        image = request.FILES.get("photo")
-
-        if title and testi and git and linkedin and image:
+        if name and testi and git and linkedin and image:
             a = testimonial.objects.create (
-            title = title,
+            name = name,
             testi = testi,
             git =git,
             linkdin =linkedin,
-             image = image )
+            image = image )
             a.save()
         else:
             return HttpResponse("Please fill all fields")
     return render(request, 'testEntry.html')
 
-def displayTesti(request):
-    testi = testimonial.objects.all()
-    return render(request , "showTesti.html",{"testi":testi})
 
-def contact(request):
-    return render(request,'contact.html')
-
-def testEntry(request):   
-    if request.method == "POST" :
-        title = request.POST.get("title")
-        testi = request.POST.get("description")
-        git = request.POST.get("github")
-        linkedin = request.POST.get("linkedin")
-        image = request.FILES.get("photo")
-
-        if title and testi and git and linkedin and image:
-            a = testimonial.objects.create (
-            title = title,
-            testi = testi,
-            git =git,
-            linkdin =linkedin,
-             image = image )
-            a.save()
-        else:
-            return HttpResponse("Please fill all fields")
-    return render(request, 'testEntry.html')
-
-def displayTesti(request):
-    testi = testimonial.objects.all()
-    return render(request , "showTesti.html",{"testi":testi})
 
 def contact(request):
     return render(request,'contact.html')
