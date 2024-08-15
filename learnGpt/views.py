@@ -32,7 +32,17 @@ def gen(request):
             
             model = genai.GenerativeModel('gemini-1.5-flash')
             response = model.generate_content(f"Assume you are an expert in the topic of {sub} and you have been asked {question} by a student studying in year {year} of engineering. Answer the question comprehensively with the primary context of notes text: {text}. Also, add additional essential information if necessary, return the text STRICTLY in human understanble language.")
-            generated_text = response
+            candidates = getattr(response, 'candidates', [])
+            if candidates:
+                candidate = candidates[0]
+                content = getattr(candidate, 'content', {})
+                parts = getattr(content, 'parts', [])
+                if parts:
+                    generated_text = parts[0].text
+                else:
+                    generated_text = 'No text parts found in the response'
+            else:
+                generated_text = 'No candidates found in the response'
             
             """if response.result and response.result.candidates:
                 candidate = response.result.candidates[0]
@@ -45,6 +55,7 @@ def gen(request):
             
             context = {
                 'generated_text': generated_text,
+                'question': question,
             }
             return render(request, 'your_template.html', context)
         

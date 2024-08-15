@@ -13,3 +13,18 @@ class testimonial(models.Model):
     testi = models.TextField()
     git = models.URLField()
     linkdin = models.URLField()
+
+class events(models.Model):
+    title = models.CharField(max_length=255)
+    date = models.DateField(null = True,blank=True)
+    time = models.TimeField(null = True,blank=True) 
+    bd = models.CharField(max_length=1000)
+    description = models.CharField(blank=True,null=True)
+    thumbnail = models.FileField(upload_to='satic/event')
+
+class even(models.Model):
+    event = models.ForeignKey(events ,on_delete=models.CASCADE)
+    photos = models.FileField(upload_to = 'satic/event')
+    photoCaption = models.CharField(max_length= 300)
+    url = models.URLField(blank =True,null = True )
+
