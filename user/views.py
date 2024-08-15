@@ -35,25 +35,7 @@ def displayTesti(request):
     return render(request , "testimonials.html",{"testi":testi})
 
 
-def testEntry(request):   
-    if request.method == "POST" :
-        name = request.POST.get("title")
-        testi = request.POST.get("description")
-        git = request.POST.get("github")
-        linkedin = request.POST.get("linkedin")
-        image = request.FILES.get("photo")
-        
-        if name and testi and git and linkedin and image:
-            a = testimonial.objects.create (
-            name = name,
-            testi = testi,
-            git =git,
-            linkdin =linkedin,
-            image = image )
-            a.save()
-        else:
-            return HttpResponse("Please fill all fields")
-    return render(request, 'testEntry.html')
+
 
 
 
