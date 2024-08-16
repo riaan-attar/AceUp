@@ -23,7 +23,7 @@ def gen(request):
                     extracted_text += page_text
         
         text = extracted_text
-        
+        print(extracted_text)
         api_key = os.getenv("GOOGLE_API_KEY")
         
         try:
@@ -57,11 +57,11 @@ def gen(request):
                 'generated_text': generated_text,
                 'question': question,
             }
-            return render(request, 'your_template.html', context)
+            return render(request, 'gpt.html', context)
         
         except Exception as e:
             
-            return render(request, 'your_template.html', {'error': str(e)})
+            return render(request, 'gpt.html', {'error': str(e)})
     
     
-    return render(request, "your_template.html")
+    return render(request, "gpt.html")

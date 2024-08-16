@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body class="bg-gray-900">
+    
+    <div class="bg-white dark:bg-gray-900 text-black dark:text-white pb-6 sm:pb-8 lg:pb-1">
+        <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+            <header class="mb-4 flex items-center justify-between py-2 md:py-4 xl:mb-2">
+    
+                <!-- logo - start -->
+                <a href="/" class="inline-flex items-center gap-2.5 text-2xl font-bold text-black dark:text-white md:text-3xl" aria-label="logo">
+                    <svg width="95" height="94" viewBox="0 0 95 94" class="h-auto w-6 text-indigo-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M96 0V47L48 94H0V47L48 0H96Z" />
+                    </svg>
+                    AceUp 
+                </a>
+                    
+                
+                <!-- logo - end -->
+    
+                <!-- nav - start -->
+                <nav class="hidden gap-12 lg:flex">
+                    <!-- <a href="#" class="text-lg font-semibold text-indigo-500">Home</a> -->
+                    <a href="{% url 'landing' %}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Home</a>
+                    <a href="{% url 'displayTesti'%}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Testimonials</a>
+                    <a href="{%url 'events'%}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Events</a>
+                    <a href="{%url 'communities'%}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Communities</a>
+                </nav>
+                <!-- nav - end -->
+    
+                <!-- buttons - start -->
+                <a href="{% url 'contact' %}" class="hidden rounded-lg bg-gray-200 dark:bg-gray-700 px-8 py-3 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 dark:hover:bg-gray-600 focus-visible:ring active:text-gray-700 dark:active:text-gray-400 md:text-base lg:inline-block">Contact Us</a>
+    
+                <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-gray-200 dark:bg-gray-700 px-2.5 py-2 text-sm font-semibold text-gray-500 dark:text-gray-300 ring-indigo-300 hover:bg-gray-300 dark:hover:bg-gray-600 focus-visible:ring active:text-gray-700 dark:active:text-gray-400 md:text-base lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                    </svg>
+                    Menu
+                </button>
+                <!-- buttons - end -->
+            </header>
+        </div>
+    </div>
+    <!-- Existing form code -->
+    <div class="bg-gray-900 text-white py-6 sm:py-8 lg:py-12">
+        <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+          <!-- form - start -->
+          <form id="chatbotForm" class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
+            <div>
+              <label for="year" class="mb-2 inline-block text-sm sm:text-base">Year*</label>
+              <select id="year" name="year" class="w-full rounded border bg-gray-800 px-3 py-2 text-white outline-none ring-indigo-500 transition duration-100 focus:ring">
+                <option value="">Select Year</option>
+                <option value="first">First</option>
+                <option value="second">Second</option>
+                <option value="third">Third</option>
+                <option value="fourth">Fourth</option>
+              </select>
+            </div>
+      
+            <div>
+              <label for="subject" class="mb-2 inline-block text-sm sm:text-base">Subject*</label>
+              <select id="subject" name="subject" class="w-full rounded border bg-gray-800 px-3 py-2 text-white outline-none ring-indigo-500 transition duration-100 focus:ring">
+                <option value="">Select Subject</option>
+                <!-- Subjects will be dynamically populated based on year selection -->
+              </select>
+            </div>
+          </form>
+          <!-- form - end -->
+        </div>
+      </div>
+
+      <!-- Chatbot interface - start -->
+      <div class="bg-gray-900 text-white py-6 sm:py-8 lg:py-1">
+        <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+          <div class="mx-auto max-w-screen-md">
+            <div id="chatbox" class="bg-gray-700 rounded-lg p-4 h-96 overflow-y-auto mb-4"></div>
+            <form>
+                <div class="sm:col-span-2">
+                    <label for="question" class="mb-2 inline-block text-sm sm:text-base">Question*</label>
+                    <input id="question" name="question" placeholder="Type your question..." class="w-full rounded border bg-gray-800 px-3 py-2 text-white outline-none ring-indigo-500 transition duration-100 focus:ring" />
+                  </div>
+            </form>
+            <button id="sendButton" class="mt-2 w-full rounded bg-indigo-500 px-4 py-2 text-white">Send</button>
+          </div>
+        </div>
+      </div>
+      <!-- Chatbot interface - end -->
+
+      <script>
+        const subjects = {
+          first: ["Linear Algebra", "Physics", "Chemistry", "Fundamentals of Electronics", "Fundamentals of Electrical Engg.","Differential Equations & Integral Calculus","Programming in C","Computational Thinking"],
+          second: ["Mathematics II", "Data Structures", "Digital Electronics", "Object-Oriented Programming"],
+          third: ["Algorithms", "Operating Systems", "Database Management Systems", "Computer Networks","JAVA PRIMER"],
+          fourth: ["Software Engineering", "Artificial Intelligence", "Machine Learning", "Data Science"]
+        };
+      
+        document.getElementById('year').addEventListener('change', function() {
+          const year = this.value;
+          const subjectDropdown = document.getElementById('subject');
+          subjectDropdown.innerHTML = '<option value="">Select Subject</option>'; // Clear previous options
+          
+          if (subjects[year]) {
+            subjects[year].forEach(subject => {
+              const option = document.createElement('option');
+              option.value = subject;
+              option.textContent = subject;
+              subjectDropdown.appendChild(option);
+            });
+          }
+        });
+        $('#sendButton').click(function() {
+    const yearMapping = {
+        'first': 1,
+        'second': 2,
+        'third': 3,
+        'fourth': 4
+    };
+
+    const year = $('#year').val();
+    const subject = $('#subject').val();
+    const question = $('#question').val();
+
+    if (year && subject && question) {
+        const yearInt = yearMapping[year] || null;
+
+        appendMessage(`You: ${question}`, "text-right");
+
+        $.ajax({
+            type: 'POST',
+            url: '{% url "gen" %}',  // Replace with the correct URL or use Django template tags
+            data: {
+                'year': yearInt,
+                'subject': subject,
+                'question': question,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'  // Include CSRF token for security
+            },
+            success: function(response) {
+                appendMessage(`Bot: ${response.generated_text}`);
+            },
+            error: function(xhr, status, error) {
+                appendMessage(`Bot: Sorry, something went wrong.`);
+            }
+        });
+    } else {
+        appendMessage(`Bot: Please fill out all fields before submitting.`);
+    }
+});
+
+
+        function appendMessage(message, alignment = "text-left") {
+          const messageElement = document.createElement('div');
+          messageElement.textContent = message;
+          messageElement.className = `mb-2 ${alignment}`;
+          chatbox.appendChild(messageElement);
+          chatbox.scrollTop = chatbox.scrollHeight;
+        }
+      </script>
+      
+</body>
+</html>

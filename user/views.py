@@ -6,15 +6,20 @@ import os
 def landing(request):
     return render(request, 'index.html')
 
-
-    
+def roadmaps(request):
+    roadmap = roadmaps.object.all()
+    return (render, "roadmaps.html",{"roadmaps":roadmap})
 
 def displayNotes(request):
      note = notes.objects.all()
      return render(request , "notes.html",{"notes":note})
      
     #  print(notesa)
-    
+def events(request):
+    return render(request,'events.html')
+
+def communities(request):
+    return render(request,'communities.html')
 
 def reader(request,pk):
 

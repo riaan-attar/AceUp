@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.tailwindcss.com">
 </head>
 <body>
-  <div class="bg-white dark:bg-gray-900 text-black dark:text-white pb-6 sm:pb-8 lg:pb-12">
+  <div class="bg-white dark:bg-gray-900 text-black dark:text-white pb-6 sm:pb-8 lg:pb-1">
     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
         <header class="mb-4 flex items-center justify-between py-2 md:py-4 xl:mb-2">
 
@@ -25,10 +25,10 @@
 
             <!-- nav - start -->
             <nav class="hidden gap-12 lg:flex">
-                <a href="#" class="text-lg font-semibold text-indigo-500">Home</a>
-                <a href="{% url 'displayTesti'%}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Testimonials</a>
-                <a href="#" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Events</a>
-                <a href="#" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Communities</a>
+                <a href="{% url 'landing' %}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Home</a>
+                <a href="{%url 'displayTesti'%}" class="text-lg font-semibold text-indigo-500">Testimonials</a>
+                <a href="{%url 'events'%}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Events</a>
+                <a href="{%url 'communities'%}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Communities</a>
             </nav>
             <!-- nav - end -->
 

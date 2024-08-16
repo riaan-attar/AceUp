@@ -19,12 +19,15 @@ class events(models.Model):
     date = models.DateField(null = True,blank=True)
     time = models.TimeField(null = True,blank=True) 
     bd = models.CharField(max_length=1000)
-    description = models.CharField(blank=True,null=True)
+    description = models.CharField(blank=True,null=True,max_length=1000)
     thumbnail = models.FileField(upload_to='satic/event')
 
-class even(models.Model):
+class event(models.Model):
     event = models.ForeignKey(events ,on_delete=models.CASCADE)
     photos = models.FileField(upload_to = 'satic/event')
     photoCaption = models.CharField(max_length= 300)
     url = models.URLField(blank =True,null = True )
 
+class roadmaps(models.Model):
+    title = models.CharField(max_length=255)
+    url = models.FileField(upload_to='satic/roadmaps')    

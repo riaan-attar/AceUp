@@ -28,4 +28,6 @@ urlpatterns = [
     path("contactus/",views.contact,name = "contact"),
     path('reader/<int:pk>/',views.reader,name='reader'),
     path('gen/', gen , name = 'gen'),
+    path('communities/',views.communities,name = 'communities'),
+    path('events/',views.events,name = 'events'),
 ]
