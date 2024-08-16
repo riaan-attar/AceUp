@@ -28,7 +28,9 @@ urlpatterns = [
     path("testEntry/", testEntry, name = "testEntry"),
     path("contactus/",views.contact,name = "contact"),
     path('reader/<int:pk>/',views.reader,name='reader'),
+    path('pdfreader/<int:pk>/',views.pdfreader,name='pdfreader'),
     path('gen/', gen , name = 'gen'),
     path('communities/',views.communities,name = 'communities'),
     path('events/',views.eventsview,name = 'events'),
+    path('upload_pdfs/', views.upload_pdfs, name='upload_pdfs'),
 ]

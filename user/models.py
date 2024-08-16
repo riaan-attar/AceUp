@@ -30,4 +30,4 @@ class event(models.Model):
 
 class roadmaps(models.Model):
     title = models.CharField(max_length=255)
-    url = models.FileField(upload_to='satic/roadmaps')    
+    url = models.FileField(upload_to='satic/roadmaps/')    
