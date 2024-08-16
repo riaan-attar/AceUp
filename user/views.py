@@ -6,16 +6,17 @@ import os
 def landing(request):
     return render(request, 'index.html')
 
-def roadmaps(request):
-    roadmap = roadmaps.object.all()
-    return (render, "roadmaps.html",{"roadmaps":roadmap})
+def roadmapsview(request):
+    roadmaplist = roadmaps.objects.all()
+    return render(request, "roadmaps.html",{"roadmaps":roadmaplist})
 
 def displayNotes(request):
      note = notes.objects.all()
      return render(request , "notes.html",{"notes":note})
      
     #  print(notesa)
-def events(request):
+
+def eventsview(request):
     return render(request,'events.html')
 
 def communities(request):
@@ -30,19 +31,9 @@ def reader(request,pk):
     file_l = static(filea)
     return render(request,'reader.html',{"file":file_l})
 
-
-        
-
-
-
 def displayTesti(request):
     testi = testimonial.objects.all()
     return render(request , "testimonials.html",{"testi":testi})
-
-
-
-
-
 
 def contact(request):
     return render(request,'contact.html')

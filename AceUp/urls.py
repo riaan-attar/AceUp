@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.landing,name ="landing"),
     path('displayNotes/',views.displayNotes,name ="display"),
+    path('roadmapsview/', views.roadmapsview, name='roadmapsview'),
     path('addnotes/',noteEntry,name ="upload"),
     path("displayTesti/", views.displayTesti, name = "displayTesti"),
     path("testEntry/", testEntry, name = "testEntry"),
@@ -29,5 +30,5 @@ urlpatterns = [
     path('reader/<int:pk>/',views.reader,name='reader'),
     path('gen/', gen , name = 'gen'),
     path('communities/',views.communities,name = 'communities'),
-    path('events/',views.events,name = 'events'),
+    path('events/',views.eventsview,name = 'events'),
 ]
