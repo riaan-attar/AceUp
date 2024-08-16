@@ -8,7 +8,10 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@14.0.0/lib/marked.umd.min.js"></script>
+    
+  </head>
 <body class="bg-gray-900">
     
     <div class="bg-white dark:bg-gray-900 text-black dark:text-white pb-6 sm:pb-8 lg:pb-1">
@@ -93,10 +96,10 @@
         </div>
       </div>
       <!-- Chatbot interface - end -->
-      {% if generated_text %}
+      <!-- {% if generated_text %}
                   <div>{{ generated_text }}</div>
                   {% else %}<div></div>
-                  {% endif %}
+                  {% endif %} -->
       <script>
         const subjects = {
           first: ["Linear Algebra", "Physics", "Chemistry", "Fundamentals of Electronics", "Fundamentals of Electrical Engg.","Differential Equations & Integral Calculus","Programming in C","Computational Thinking"],
@@ -148,7 +151,8 @@
             success: function(response) {
              
               if(response.generated_text) {
-                  appendMessage(`Bot: ${response.generated_text}`);
+                  //let msg = marked.parse(response.generated_text)
+                  appendMessage(`${response.generated_text}`);
               } else {
                   appendMessage(`Bot:"what the hell"`);
               }
@@ -165,7 +169,8 @@
 
         function appendMessage(message, alignment = "text-left") {
           const messageElement = document.createElement('div');
-          messageElement.textContent = message;
+          message = marked.parse(message)
+          messageElement.innerHTML = message;
           messageElement.className = `mb-2 ${alignment}`;
           chatbox.appendChild(messageElement);
           chatbox.scrollTop = chatbox.scrollHeight;
