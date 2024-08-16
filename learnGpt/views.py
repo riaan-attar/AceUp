@@ -58,11 +58,7 @@ def gen(request):
                 'generated_text': generated_text,
                 'question': question,
             }
-<<<<<<< HEAD
-            return render(request, "gpt.html", context)
-=======
             return JsonResponse(context)
->>>>>>> c6c4748e894f72be45dd7c8a56eabb11118b9a17
         
         except Exception as e:
             

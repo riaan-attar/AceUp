@@ -1,0 +1,16 @@
+<form method="POST" action="{% url 'roadmapsview' %}">
+    {}
+    {% csrf_token %}
+    <input type="text" name="query" placeholder="Search Roadmaps...">
+    <button type="submit">Search</button>
+</form>
+
+{% if roadmaplist %}
+    <ul>
+        {% for roadmap in roadmaplist %}
+            <li>{{ roadmap.title }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No roadmaps found.</p>
+{% endif %}

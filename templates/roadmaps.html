@@ -59,12 +59,13 @@
 </div>
 
 
-<form class="mx-auto max-w-lg rounded-lg bg-gray-900">
+<form method="GET" class="mx-auto max-w-lg rounded-lg bg-gray-900">
   <div class="flex flex-col gap-2 p-4 md:p-1">
     <div>
-      <label for="text" class="mb-2 inline-block text-sm text-gray-200 sm:text-base">Enter Roadmap to search</label>
-      <input name="text" placeholder="This feature is under testing " class="w-full rounded border border-gray-700 bg-gray-800 px-3 py-2 text-gray-200 outline-none ring-indigo-500 transition duration-100 focus:ring" />
+      <label for="query" class="mb-2 inline-block text-sm text-gray-200 sm:text-base">Enter Roadmap to search</label>
+      <input name="query" placeholder="This feature is under testing " class="w-full rounded border border-gray-700 bg-gray-800 px-3 py-2 text-gray-200 outline-none ring-indigo-500 transition duration-100 focus:ring" />
     </div>
+    <button type="submit" class="mt-2 rounded-lg bg-indigo-500 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-600">Search</button>
   </div>
 </form>
 
@@ -72,16 +73,20 @@
 <div class="bg-gray-900 py-6 sm:py-8 lg:py-1">
   
   <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+    {% if roadmaps %}
     {% for i in roadmaps %}
     <div class="flex flex-col items-center justify-between gap-4 rounded-lg bg-gray-800 p-4 sm:flex-row md:p-8">
-      <div>
-        <h2 class="text-xl font-bold text-indigo-400 md:text-2xl">{{i.title|upper}} </h2>
-        <!-- <p class="text-gray-300">SUB: {{i.subject|upper}}&emsp;&emsp;|&emsp;&emsp;YEAR: {{i.year}}</p> -->
-      </div>
-      <a href="{% url 'pdfreader' pk=i.id %}" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">VIEW</a>
+        <div>
+            <h2 class="text-xl font-bold text-indigo-400 md:text-2xl">{{ i.title|upper }}</h2>
+            <!-- <p class="text-gray-300">SUB: {{i.subject|upper}}&emsp;&emsp;|&emsp;&emsp;YEAR: {{i.year}}</p> -->
+        </div>
+        <a href="{% url 'pdfreader' pk=i.id %}" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">VIEW</a>
     </div>
     <br>
     {% endfor %}
+{% else %}
+    <p class="text-center text-gray-400">No roadmaps found.</p>
+{% endif %}
   </div>
   
 </div>

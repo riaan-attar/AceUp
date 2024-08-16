@@ -7,8 +7,16 @@ def landing(request):
     return render(request, 'index.html')
 
 def roadmapsview(request):
-    roadmaplist = roadmaps.objects.all()
-    return render(request, "roadmaps.html",{"roadmaps":roadmaplist})
+    if request.method == 'GET':
+        query = request.GET.get('query', '')
+        if query:
+            roadmaplist = roadmaps.objects.filter(title__icontains=query)
+        else:
+            roadmaplist = roadmaps.objects.all()
+    else:
+        roadmaplist = roadmaps.objects.all()
+
+    return render(request, 'roadmaps.html', {'roadmaps': roadmaplist})
 
 def displayNotes(request):
      note = notes.objects.all()
