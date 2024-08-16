@@ -96,8 +96,8 @@
       <script>
         const subjects = {
           first: ["Linear Algebra", "Physics", "Chemistry", "Fundamentals of Electronics", "Fundamentals of Electrical Engg.","Differential Equations & Integral Calculus","Programming in C","Computational Thinking"],
-          second: ["Mathematics II", "Data Structures", "Digital Electronics", "Object-Oriented Programming"],
-          third: ["Algorithms", "Operating Systems", "Database Management Systems", "Computer Networks","JAVA PRIMER"],
+          second: ["Mathematics II", "Data Structures", "Digital Electronics", "Object-Oriented Programming", "Computer Networks"],
+          third: ["Algorithms", "Operating Systems", "Database Management Systems","JAVA PRIMER"],
           fourth: ["Software Engineering", "Artificial Intelligence", "Machine Learning", "Data Science"]
         };
       
@@ -142,8 +142,13 @@
                 'csrfmiddlewaretoken': '{{ csrf_token }}'  // Include CSRF token for security
             },
             success: function(response) {
-                appendMessage(`Bot: ${response.generated_text}`);
-            },
+              console.log(response)
+              if(response.generated_text) {
+                  appendMessage(`Bot: ${response.generated_text}`);
+              } else {
+                  appendMessage(`Bot:"what the hell"`);
+              }
+          },
             error: function(xhr, status, error) {
                 appendMessage(`Bot: Sorry, something went wrong.`);
             }
