@@ -4,7 +4,7 @@ import pdfplumber as pp
 import google.generativeai as genai
 import os
 import dotenv
-
+from django.http import JsonResponse
 
 dotenv.load_dotenv()
 
@@ -57,7 +57,7 @@ def gen(request):
                 'generated_text': generated_text,
                 'question': question,
             }
-            return render(request, 'gpt.html', context)
+            return JsonResponse(context)
         
         except Exception as e:
             
