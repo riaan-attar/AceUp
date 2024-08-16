@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,7 +93,10 @@
         </div>
       </div>
       <!-- Chatbot interface - end -->
-
+      {% if generated_text %}
+                  <div>{{ generated_text }}</div>
+                  {% else %}<div></div>
+                  {% endif %}
       <script>
         const subjects = {
           first: ["Linear Algebra", "Physics", "Chemistry", "Fundamentals of Electronics", "Fundamentals of Electrical Engg.","Differential Equations & Integral Calculus","Programming in C","Computational Thinking"],
@@ -142,7 +146,7 @@
                 'csrfmiddlewaretoken': '{{ csrf_token }}'  // Include CSRF token for security
             },
             success: function(response) {
-              console.log(response)
+             
               if(response.generated_text) {
                   appendMessage(`Bot: ${response.generated_text}`);
               } else {
