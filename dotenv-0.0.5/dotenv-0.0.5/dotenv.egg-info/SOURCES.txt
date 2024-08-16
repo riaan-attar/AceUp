@@ -1,0 +1,10 @@
+MANIFEST.in
+README.md
+setup.py
+dotenv/__init__.py
+dotenv/__main__.py
+dotenv.egg-info/PKG-INFO
+dotenv.egg-info/SOURCES.txt
+dotenv.egg-info/dependency_links.txt
+dotenv.egg-info/top_level.txt
+scripts/dotenv
