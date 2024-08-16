@@ -10,7 +10,8 @@ dotenv.load_dotenv()
 
 def gen(request):
     if request.method == "POST":
-        sub = request.POST.get("subject")
+        sub1 = request.POST.get("subject")
+        sub = sub1.lower()
         year = request.POST.get("year")
         question = request.POST.get("question")
         pdf_urls = notes.objects.filter(year=year, subject=sub)
@@ -31,7 +32,7 @@ def gen(request):
             
             
             model = genai.GenerativeModel('gemini-1.5-flash')
-            response = model.generate_content(f"Assume you are an expert in the topic of {sub} and you have been asked {question} by a student studying in year {year} of engineering. Answer the question comprehensively with the primary context of notes text: {text}. Also, add additional essential information if necessary, return the text STRICTLY in human understanble language.")
+            response = model.generate_content(f"Assume you are an expert in the topic of {sub} and you have been asked {question} by a student studying in year {year} of engineering. Answer the question comprehensively with the primary context of notes text: {text}. Also, add additional essential information if necessary, return the text STRICTLY in human understanble language, without any special characters such as # /n or ** ins response.")
             candidates = getattr(response, 'candidates', [])
             if candidates:
                 candidate = candidates[0]
@@ -57,7 +58,7 @@ def gen(request):
                 'generated_text': generated_text,
                 'question': question,
             }
-            return render(request, 'gpt.html', context)
+            return render(request, "gpt.html", context)
         
         except Exception as e:
             
