@@ -32,5 +32,7 @@ urlpatterns = [
     path('gen/', gen , name = 'gen'),
     path('communities/',views.communities,name = 'communities'),
     path('events/',views.eventsview,name = 'events'),
-    path('upload_pdfs/', views.upload_pdfs, name='upload_pdfs'),
+    path('upload_pdfs/', upload_pdfs, name='upload_pdfs'),
+    path('know_more/',views.eventsinfo, name = 'eventinfo'),
+    path('event_upload/', event_upload, name = 'event_upload'),
 ]

@@ -1,16 +1,63 @@
-<form method="POST" action="{% url 'roadmapsview' %}">
-    {}
-    {% csrf_token %}
-    <input type="text" name="query" placeholder="Search Roadmaps...">
-    <button type="submit">Search</button>
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Event</title>
+</head>
+<body>
+    <h1>Add Event</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <!-- Fields for events model -->
+        <h3>Event Details</h3>
+        {{ events_form.as_p }}
+        
+        <!-- Fields for multiple event forms -->
+        <h3>Additional Event Media</h3>
+        <div id="formset-container">
+            {{ formset.management_form }}
+            {% for form in formset %}
+                <div class="formset-row">
+                    {{ form.as_p }}
+                    {% if form.instance.pk %}
+                        <button type="button" class="remove-form">Remove</button>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        <button type="button" id="add-form">Add Another Photo</button>
+        
+        <button type="submit">Submit</button>
+    </form>
 
-{% if roadmaplist %}
-    <ul>
-        {% for roadmap in roadmaplist %}
-            <li>{{ roadmap.title }}</li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No roadmaps found.</p>
-{% endif %}
+    <script>
+        document.getElementById('add-form').addEventListener('click', function() {
+            // JavaScript code to clone and append a new formset row
+            const formsetContainer = document.getElementById('formset-container');
+            const formCount = formsetContainer.querySelectorAll('.formset-row').length;
+            const formIdx = formCount + 1;
+
+            // Clone the first form and modify the `form-TOTAL_FORMS` value
+            const formRow = formsetContainer.querySelector('.formset-row');
+            const newFormRow = formRow.cloneNode(true);
+            newFormRow.querySelectorAll('input, select, textarea').forEach(input => {
+                input.name = input.name.replace(/\d/, formIdx);
+                input.id = input.id.replace(/\d/, formIdx);
+                input.value = '';
+            });
+            formsetContainer.appendChild(newFormRow);
+
+            // Update the formset total forms count
+            const totalForms = document.querySelector('input[name="formset-TOTAL_FORMS"]');
+            totalForms.value = formIdx;
+        });
+        
+        document.querySelectorAll('.remove-form').forEach(button => {
+            button.addEventListener('click', function() {
+                // JavaScript code to remove a formset row
+                this.closest('.formset-row').remove();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 class notes(models.Model):
     title = models.CharField(max_length=255)
+    unit =  models.IntegerField(null =True,blank =True)
     year = models.IntegerField()
     subject = models.CharField(max_length=100)
     url = models.FileField(upload_to ='satic/notes/')
@@ -19,7 +20,7 @@ class events(models.Model):
     date = models.DateField(null = True,blank=True)
     time = models.TimeField(null = True,blank=True) 
     bd = models.CharField(max_length=1000)
-    description = models.CharField(blank=True,null=True,max_length=1000)
+    description = models.TextField(blank=True,null=True)
     thumbnail = models.FileField(upload_to='satic/event')
 
 class event(models.Model):
