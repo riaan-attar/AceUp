@@ -30,11 +30,12 @@ def displayNotes(request ):
      note = notes.objects.all()
      if request.method =='POST':
          
-         sub = request.POST.get('subject')
+         sub1 = request.POST.get('subject')
          year = request.POST.get('year')
+         sub = sub1.upper()
          if sub and year :
             note = notes.objects.filter(year = year,subject =sub )
-     print(f"Note List: {note}")  
+     
      return render(request , "notes.html",{"notes":note})
     
      
