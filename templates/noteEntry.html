@@ -14,10 +14,10 @@
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <div>
+        <!-- <div>
             <label for="title">Title:</label>
             <input type="text" name="title" id="title" required>
-        </div>
+        </div> -->
         <div>
             <label for="year">Year:</label>
             <input type="number" name="year" id="year" required>
@@ -28,7 +28,7 @@
         </div>
         <div>
             <label for="url">Upload File:</label>
-            <input type="file" name="url" id="url" required>
+            <input type="file" name="pdf_files" multiple>
         </div>
         <div>
             <button type="submit">Submit</button>

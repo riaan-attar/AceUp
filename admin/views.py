@@ -33,26 +33,54 @@ def upload_pdfs(request):
 
     return render(request, 'upload_pdfs.html')  # Render a template with a file upload form
 
-
-# Create your views here.
 def noteEntry(request):
-    if request.method == "POST" :
-        title = request.POST.get("title")
-        year = request.POST.get("year")
-        subject = request.POST.get("subject")
-        url = request.FILES.get("url")
-        unit = request.POST.get("unit")
-        if title and subject and year and url and unit :
-            n = notes.objects.create (
-            title = title,
-            year = year,
-            subject = subject,
-            url = url, 
-            unit = unit)
-            n.save()
+    if request.method == 'POST':
+        # Check if files are present in the request
+        if 'pdf_files' in request.FILES:
+            files = request.FILES.getlist('pdf_files')
+            subject = request.POST.get("subject")
+            year = request.POST.get("year")
+            for file in files:
+                # Generate a file name and save the file
+                file_name = file.name
+                file_path = os.path.join(settings.MEDIA_ROOT, 'satic/notes/', file_name)
+
+                # Save file to the media directory
+                with default_storage.open(file_path, 'wb+') as destination:
+                    for chunk in file.chunks():
+                        destination.write(chunk)
+                
+                # Save file information in the database
+                notes.objects.create(
+                    title=file_name[:-4].upper(),
+                    url=file_path,
+                    subject = subject.upper(),
+                    year=year
+                )
         else:
             return HttpResponse("Please fill all fields")
     return render(request, 'noteEntry.html')
+
+
+# Create your views here.
+# def noteEntry(request):
+#     if request.method == "POST" :
+#         title = request.POST.get("title")
+#         year = request.POST.get("year")
+#         subject = request.POST.get("subject")
+#         url = request.FILES.get("url")
+#         unit = request.POST.get("unit")
+#         if title and subject and year and url and unit :
+#             n = notes.objects.create (
+#             title = title,
+#             year = year,
+#             subject = subject,
+#             url = url, 
+#             unit = unit)
+#             n.save()
+#         else:
+#             return HttpResponse("Please fill all fields")
+#     return render(request, 'noteEntry.html')
 
 def testEntry(request):   
     if request.method == "POST" :

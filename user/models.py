@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class notes(models.Model):
     title = models.CharField(max_length=255)
-    unit =  models.IntegerField(null =True,blank =True)
+    # unit =  models.IntegerField(null =True,blank =True)
     year = models.IntegerField()
     subject = models.CharField(max_length=100)
     url = models.FileField(upload_to ='satic/notes/')
