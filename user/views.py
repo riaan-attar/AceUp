@@ -10,7 +10,8 @@ from django.core.files.base import ContentFile
 import os# Create your views here.
 
 def landing(request):
-    return render(request, 'index.html')
+    doc = docs.objects.all()
+    return render(request , "index.html",{"docs":doc})
 
 def roadmapsview(request):
     if request.method == 'GET':
@@ -132,7 +133,7 @@ def upload_pdfs(request):
                     url=file_path
                 )
 
-            return redirect('your_success_url')  # Redirect to a success page or another view
+            return render('adddocs.html')  # Redirect to a success page or another view
 
-    return render(request, 'upload_pdfs.html')  # Render a template with a file upload form
+    return render(request, 'adddocs.html')  # Render a template with a file upload form
 
