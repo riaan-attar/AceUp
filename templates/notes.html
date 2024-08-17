@@ -62,33 +62,35 @@
 </div>
 <div class="bg-gray-900 text-white py-4 sm:py-6 lg:py-1">
     <div class="mx-auto max-w-screen-2xl px-4 md:px-1">
-<form id="chatbotForm" class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
-  <div>
-    <label for="year" class="mb-2 inline-block text-sm sm:text-base">Year*</label>
-    <select id="year" name="year" class="w-full rounded border bg-gray-800 px-3 py-2 text-white outline-none ring-indigo-500 transition duration-100 focus:ring">
-      <option value="">Select Year</option>
-      <option value="first">First</option>
-      <option value="second">Second</option>
-      <option value="third">Third</option>
-      <option value="fourth">Fourth</option>
-    </select>
-  </div>
-
-  <div>
-    <label for="subject" class="mb-2 inline-block text-sm sm:text-base">Subject*</label>
-    <select id="subject" name="subject" class="w-full rounded border bg-gray-800 px-3 py-2 text-white outline-none ring-indigo-500 transition duration-100 focus:ring">
-      <option value="">Select Subject</option>
-      <!-- Subjects will be dynamically populated based on year selection -->
-    </select>
-  </div>
-</form>
+      <form id="chatbotForm" class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
+        <div>
+          <label for="year" class="mb-2 inline-block text-sm sm:text-base">Year*</label>
+          <select id="year" name="year" class="w-full rounded border bg-gray-800 px-3 py-2 text-white outline-none ring-indigo-500 transition duration-100 focus:ring">
+            <option value="">Select Year</option>
+            <option value="1">First</option>
+            <option value="2">Second</option>
+            <option value="3">Third</option>
+            <option value="4">Fourth</option>
+          </select>
+        </div>
+      
+        <div>
+          <label for="subject" class="mb-2 inline-block text-sm sm:text-base">Subject*</label>
+          <select id="subject" name="subject" class="w-full rounded border bg-gray-800 px-3 py-2 text-white outline-none ring-indigo-500 transition duration-100 focus:ring">
+            <option value="">Select Subject</option>
+            <!-- Subjects will be dynamically populated based on year selection -->
+          </select>
+        </div>
+      
+        <div class="col-span-2 flex justify-center lg:py-1">
+          <button type="submit" class="mt-2  w-1/2 rounded-lg bg-indigo-500 px-4 py-3 text-sm font-semibold text-white hover:bg-indigo-600">Search</button>
+        </div>
+      </form>
+      
 </div>
 </div>
-<form method="GET" class="mx-auto max-w-lg rounded-lg bg-gray-900">
-  <div class="flex flex-col gap-2 p-4 md:p-4">
-    <button type="submit" class="mt-2 rounded-lg bg-indigo-500 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-600">Search</button>
-  </div>
-</form>
+<!-- <form method="GET" class="mx-auto max-w-lg rounded-lg bg-gray-900">
+</form> -->
 <div class="bg-gray-900 py-6 sm:py-8 lg:py-4">
   
     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
@@ -107,10 +109,10 @@
   </div>
   <script>
     const subjects = {
-      first: ["Linear Algebra", "Physics", "Chemistry", "Fundamentals of Electronics", "Fundamentals of Electrical Engg.","Differential Equations & Integral Calculus","Programming in C","Computational Thinking","Engg. Drawing"],
-      second: ["Mathematics II", "Digital Electronics", "Object-Oriented Programming", "Computer Networks","DATA STRUCTURES"],
-      third: ["Algorithms", "Operating Systems", "Database Management Systems","JAVA PRIMER"],
-      fourth: ["Software Engineering", "Artificial Intelligence", "Machine Learning", "Data Science"]
+      1: ["Linear Algebra", "Physics", "Chemistry", "Fundamentals of Electronics", "Fundamentals of Electrical Engg.","Differential Equations & Integral Calculus","Programming in C","Computational Thinking","Engg. Drawing"],
+      2: ["Mathematics II", "Digital Electronics", "Object-Oriented Programming", "Computer Networks","DATA STRUCTURES"],
+      3: ["Algorithms", "Operating Systems", "Database Management Systems","JAVA PRIMER"],
+      4: ["Software Engineering", "Artificial Intelligence", "Machine Learning", "Data Science"]
     };
   
     document.getElementById('year').addEventListener('change', function() {
