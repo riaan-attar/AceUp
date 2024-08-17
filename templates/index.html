@@ -52,13 +52,11 @@
                     <h1 class="mb-8 text-4xl font-bold text-black dark:text-white sm:text-5xl md:mb-12 md:text-6xl">By the AI&DS for KKWIEER</h1>
                     <p class="mb-4 font-semibold text-indigo-500 md:mb-6 md:text-lg xl:text-xl">Powered by Phenonix Club</p>
                     <div class="flex flex-col gap-2.5 sm:flex-row sm:justify-center lg:justify-start">
-                        <!-- <a href="#" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">NOTES</a> -->
                         <a href="{% url 'display' %}" class="inline-flex items-center justify-center rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">
                             NOTES </a>
                           
                         <a href="{% url 'gen' %}" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">LEARNING GPT</a>
                         <a href="{%url 'roadmapsview'%}" class="inline-flex items-center justify-center rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"> ROADMAPS </a>
-                        <!-- <a href="#" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">UPCOMMING...</a> -->
 
                         <a href="#" class="inline-block rounded-lg bg-gray-200 dark:bg-gray-700 px-8 py-3 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 dark:hover:bg-gray-600 focus-visible:ring active:text-gray-700 dark:active:text-gray-400 md:text-base">...</a>
 
@@ -71,10 +69,22 @@
                 <div class="h-48 lg:h-96 xl:w-5/12 flex justify-center items-center overflow-hidden rounded-lg bg-transparent">
                     <img src="{% static 'images/main2.svg' %}" loading="lazy" alt="Photo by Fakurian Design" class="max-h-1/2 max-w-3/4" />
                 </div>
-                
-                
                 <!-- image - end -->
+            </section>      
+            <section class="flex flex-col gap-4 border-t pt-8 lg:items-start lg:flex-row lg:gap-8">
+                <!-- IMP DOC - start -->
+                <p class="mt-2 mb-4 font-semibold text-indigo-500 md:mb-6 md:text-lg xl:text-xl">Important Documents:</p>
+                <div class="flex flex-col gap-2.5 lg:flex-row">
+                    <a href="{% url 'docreader' pk=2 %}" class="inline-flex items-center justify-start rounded-lg bg-indigo-500 px-8 py-3 text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">AI&DS 23-24 Pattern</a>
+                    <a href="{% url 'docreader' pk=1 %}" class="inline-flex items-center justify-start rounded-lg bg-indigo-500 px-8 py-3 text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Computer 23-24 Pattern</a>
+                    <a href="{% url 'docreader' pk=3 %}" class="inline-flex items-center justify-start rounded-lg bg-indigo-500 px-8 py-3 text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">CSD 23-24 Pattern</a>
+                    <a href="{% url 'docreader' pk=4 %}" class="inline-flex items-center justify-start rounded-lg bg-indigo-500 px-8 py-3 text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">IT 23-24 Pattern</a>
+                    <a href="{% url 'docreader' pk=5 %}" class="inline-flex items-center justify-start rounded-lg bg-indigo-500 px-8 py-3 text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">EnTC 23-24 Pattern</a>
+                </div>
             </section>
+            
+            
+              
         </div>
     </div>
 </body>
