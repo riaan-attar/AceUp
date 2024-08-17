@@ -27,11 +27,16 @@ def roadmapsview(request):
     return render(request, 'roadmaps.html', {'roadmaps': roadmaplist})
 
 def displayNotes(request ):
+     note = notes.objects.all()
      if request.method =='POST':
+         
          sub = request.POST.get('subject')
-         year = request.post.get('year')
-         note = notes.objects.filter(year = year,subject =sub )
+         year = request.POST.get('year')
+         if sub and year :
+            note = notes.objects.filter(year = year,subject =sub )
+     print(f"Note List: {note}")  
      return render(request , "notes.html",{"notes":note})
+    
      
     #  print(notesa)
 
