@@ -8,6 +8,7 @@ from django.core.files.storage import default_storage
 from django.conf import settings
 from django.core.files.base import ContentFile
 import os# Create your views here.
+import markdown2
 
 def landing(request):
     return render(request, 'index.html')
@@ -25,7 +26,10 @@ def roadmapsview(request):
     return render(request, 'roadmaps.html', {'roadmaps': roadmaplist})
 
 def displayNotes(request ):
-     note = notes.objects.all()
+     if request.method =='POST':
+         sub = request.POST.get('subject')
+         year = request.post.get('year')
+         note = notes.objects.filter(year = year,subject =sub )
      return render(request , "notes.html",{"notes":note})
      
     #  print(notesa)
@@ -36,12 +40,13 @@ def displayDocs(request):
 
 def eventsview(request):
     event_list = events.objects.all()
+    
     return render(request,'events.html',{'event_list': event_list})
 
 def eventsinfo(request, event_id):
     event_main = get_object_or_404(events, pk=event_id)
-    event_details = event.objects.filter(event=event_main)
     event_main.description = markdown2.markdown(event_main.description)
+    event_details = event.objects.filter(event=event_main)
     return render(request, 'event_detail.html', {'event_main': event_main,'event_details': event_details})
 
     
