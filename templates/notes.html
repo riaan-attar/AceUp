@@ -54,13 +54,36 @@
     <div class="mb-10 md:mb-16">
       <h2 class="mb-4 text-center text-2xl font-bold text-white md:mb-6 lg:text-3xl">NOTES</h2>
 
-      <p class="mx-auto max-w-screen-md text-center text-gray-400 md:text-lg">This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of a real written text but is random or otherwise generated.</p>
+      <p class="mx-auto max-w-screen-md text-center text-gray-400 md:text-lg">specially Curated notes for you, we are updating this section soon we will add more Notes ASAP.</p>
     </div>
     <!-- text - end -->
     
   </div>
 </div>
+<div class="bg-gray-900 text-white py-4 sm:py-6 lg:py-1">
+    <div class="mx-auto max-w-screen-2xl px-4 md:px-1">
+<form id="chatbotForm" class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
+  <div>
+    <label for="year" class="mb-2 inline-block text-sm sm:text-base">Year*</label>
+    <select id="year" name="year" class="w-full rounded border bg-gray-800 px-3 py-2 text-white outline-none ring-indigo-500 transition duration-100 focus:ring">
+      <option value="">Select Year</option>
+      <option value="first">First</option>
+      <option value="second">Second</option>
+      <option value="third">Third</option>
+      <option value="fourth">Fourth</option>
+    </select>
+  </div>
 
+  <div>
+    <label for="subject" class="mb-2 inline-block text-sm sm:text-base">Subject*</label>
+    <select id="subject" name="subject" class="w-full rounded border bg-gray-800 px-3 py-2 text-white outline-none ring-indigo-500 transition duration-100 focus:ring">
+      <option value="">Select Subject</option>
+      <!-- Subjects will be dynamically populated based on year selection -->
+    </select>
+  </div>
+</form>
+</div>
+</div>
 <div class="bg-gray-900 py-6 sm:py-8 lg:py-1">
   
     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
@@ -77,6 +100,28 @@
     </div>
     
   </div>
+  <script>
+    const subjects = {
+      first: ["Linear Algebra", "Physics", "Chemistry", "Fundamentals of Electronics", "Fundamentals of Electrical Engg.","Differential Equations & Integral Calculus","Programming in C","Computational Thinking"],
+      second: ["Mathematics II", "Data Structures", "Digital Electronics", "Object-Oriented Programming", "Computer Networks"],
+      third: ["Algorithms", "Operating Systems", "Database Management Systems","JAVA PRIMER"],
+      fourth: ["Software Engineering", "Artificial Intelligence", "Machine Learning", "Data Science"]
+    };
   
+    document.getElementById('year').addEventListener('change', function() {
+      const year = this.value;
+      const subjectDropdown = document.getElementById('subject');
+      subjectDropdown.innerHTML = '<option value="">Select Subject</option>'; // Clear previous options
+      
+      if (subjects[year]) {
+        subjects[year].forEach(subject => {
+          const option = document.createElement('option');
+          option.value = subject;
+          option.textContent = subject;
+          subjectDropdown.appendChild(option);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
