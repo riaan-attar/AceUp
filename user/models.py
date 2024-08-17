@@ -7,6 +7,10 @@ class notes(models.Model):
     year = models.IntegerField()
     subject = models.CharField(max_length=100)
     url = models.FileField(upload_to ='satic/notes/')
+    
+class docs(models.Model):
+    title = models.CharField(max_length=255)
+    url = models.FileField(upload_to='satic/docs')
 
 class testimonial(models.Model):
     name = models.CharField(max_length=300)
