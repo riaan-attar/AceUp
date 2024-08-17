@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COMMUNITIES</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Ensure the side menu has a higher z-index to render above other content */
+      #sideMenu {
+          z-index: 50;
+      }
+  </style>
 </head>
 <body class="bg-gray-900">
   <div class="bg-white dark:bg-gray-900 text-black dark:text-white pb-6 sm:pb-8 lg:pb-1">
@@ -34,7 +40,7 @@
             <!-- buttons - start -->
             <a href="{% url 'contact' %}" class="hidden rounded-lg bg-gray-200 dark:bg-gray-700 px-8 py-3 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 dark:hover:bg-gray-600 focus-visible:ring active:text-gray-700 dark:active:text-gray-400 md:text-base lg:inline-block">Contact Us</a>
 
-            <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-gray-200 dark:bg-gray-700 px-2.5 py-2 text-sm font-semibold text-gray-500 dark:text-gray-300 ring-indigo-300 hover:bg-gray-300 dark:hover:bg-gray-600 focus-visible:ring active:text-gray-700 dark:active:text-gray-400 md:text-base lg:hidden">
+            <button type="button" id="menuButton" class="inline-flex items-center gap-2 rounded-lg bg-gray-200 dark:bg-gray-700 px-2.5 py-2 text-sm font-semibold text-gray-500 dark:text-gray-300 ring-indigo-300 hover:bg-gray-300 dark:hover:bg-gray-600 focus-visible:ring active:text-gray-700 dark:active:text-gray-400 md:text-base lg:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
                 </svg>
@@ -44,13 +50,31 @@
         </header>
     </div>
 </div>
+
+    <!-- Side Menu - start -->
+    <div id="sideMenu" class="fixed top-0 right-0 h-full w-64 bg-gray-800 text-white transform translate-x-full transition-transform duration-300 lg:hidden">
+        <button id="closeMenuButton" class="absolute top-4 right-4 text-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <nav class="flex flex-col gap-4 p-8">
+            <a href="{% url 'landing' %}" class="text-lg font-semibold text-gray-300 hover:text-indigo-500">Home</a>
+            <a href="{% url 'displayTesti' %}" class="text-lg font-semibold text-gray-300 hover:text-indigo-500">Testimonials</a>
+            <a href="{% url 'events' %}" class="text-lg font-semibold text-gray-300 hover:text-indigo-500">Events</a>
+            <a href="{% url 'communities' %}" class="text-lg font-semibold text-indigo-500">Communities</a>
+            <a href="{% url 'contact' %}" class="rounded-lg bg-gray-700 px-4 py-2 text-center text-sm font-semibold text-gray-300 hover:bg-gray-600">Contact Us</a>
+        </nav>
+    </div>
+    <!-- Side Menu - end -->
+
     <div class="bg-gray-900 py-6 sm:py-8 lg:py-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
           <div class="mb-4 flex items-center justify-between gap-8 sm:mb-8 md:mb-12">
             <div class="flex items-center gap-12">
               <h2 class="text-2xl font-bold text-gray-200 lg:text-3xl">COMMUNITIES & CLUBS</h2>
       
-              <p class="hidden max-w-screen-sm text-gray-400 md:block">Here are some various COMMUNITIES & CLUBS which you can join </p>
+              <p class="hidden max-w-screen-sm text-gray-400 md:block">Here are some various COMMUNITIES & CLUBS which you can join</p>
             </div>
       
             <!-- <a href="#" class="inline-block rounded-lg border bg-gray-800 px-4 py-2 text-center text-sm font-semibold text-gray-200 outline-none ring-indigo-500 transition duration-100 hover:bg-gray-700 focus-visible:ring active:bg-gray-600 md:px-8 md:py-3 md:text-base">More</a> -->
@@ -100,5 +124,15 @@
         </div>
       </div>
       
+    <script>
+        // JavaScript to handle the menu toggle
+        document.getElementById('menuButton').onclick = function () {
+            document.getElementById('sideMenu').classList.remove('translate-x-full');
+        }
+
+        document.getElementById('closeMenuButton').onclick = function () {
+            document.getElementById('sideMenu').classList.add('translate-x-full');
+        }
+    </script>
 </body>
 </html>
