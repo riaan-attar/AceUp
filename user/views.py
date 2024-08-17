@@ -1,4 +1,4 @@
-from django.shortcuts import render ,redirect, HttpResponse
+from django.shortcuts import render ,redirect, HttpResponse,get_object_or_404
 from .models import*
 from django.templatetags.static import static
 import os
@@ -24,7 +24,7 @@ def roadmapsview(request):
 
     return render(request, 'roadmaps.html', {'roadmaps': roadmaplist})
 
-def displayNotes(request):
+def displayNotes(request ):
      note = notes.objects.all()
      return render(request , "notes.html",{"notes":note})
      
@@ -35,7 +35,19 @@ def displayDocs(request):
     return render(request , "index.html",{"docs":doc})
 
 def eventsview(request):
-    return render(request,'events.html')
+    event_list = events.objects.all()
+    return render(request,'events.html',{'event_list': event_list})
+
+def eventsinfo(request, event_id):
+    event_main = get_object_or_404(events, pk=event_id)
+    event_details = event.objects.filter(event=event_main)
+    event_main.description = markdown2.markdown(event_main.description)
+    return render(request, 'event_detail.html', {'event_main': event_main,'event_details': event_details})
+
+    
+
+
+
 
 def communities(request):
     return render(request,'communities.html')
