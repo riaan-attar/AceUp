@@ -1,0 +1,6 @@
+Django==5.1
+google-generativeai==0.7.2
+pdfplumber==0.11.3
+Pillow==10.4.0
+python-dotenv==1.0.1
+markdown2==2.4.0
