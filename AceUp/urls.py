@@ -18,6 +18,7 @@ from django.urls import path
 from user import views
 from admin.views import *
 from learnGpt.views import *
+from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.landing,name ="landing"),
@@ -38,4 +39,4 @@ urlpatterns = [
     path('upload_pdfs/', upload_pdfs, name='upload_pdfs'),
     path('know_more/',views.eventsinfo, name = 'eventinfo'),
     path('event_upload/', event_upload, name = 'event_upload'),
-]
+]+ static(settings.STATIC_URL, document_root=os.path.join(settings.BASE_DIR, 'staticfiles'))
