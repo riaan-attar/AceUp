@@ -4,3 +4,4 @@ pdfplumber==0.11.3
 Pillow==10.4.0
 python-dotenv==1.0.1
 markdown2==2.4.0
+gunicorn==20.2.0
