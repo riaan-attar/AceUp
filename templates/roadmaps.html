@@ -9,12 +9,12 @@
     <script src="https://cdn.tailwindcss.com"></script> 
 </head>
 <body class="bg-gray-900 text-white">
-  <div class="bg-white dark:bg-gray-900 text-black dark:text-white pb-6 sm:pb-8 lg:pb-1">
+  <div class="bg-gray-900 text-white pb-6 sm:pb-8 lg:pb-1">
     <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
         <header class="mb-4 flex items-center justify-between py-2 md:py-4 xl:mb-2">
 
             <!-- logo - start -->
-            <a href="/" class="inline-flex items-center gap-2.5 text-2xl font-bold text-black dark:text-white md:text-3xl" aria-label="logo">
+            <a href="/" class="inline-flex items-center gap-2.5 text-2xl font-bold text-white md:text-3xl" aria-label="logo">
                 <svg width="95" height="94" viewBox="0 0 95 94" class="h-auto w-6 text-indigo-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M96 0V47L48 94H0V47L48 0H96Z" />
                 </svg>
@@ -26,17 +26,17 @@
 
             <!-- nav - start -->
             <nav class="hidden gap-12 lg:flex">
-                <a href="{% url 'landing' %}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Home</a>
-                <a href="{% url 'displayTesti'%}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Testimonials</a>
-                <a href="{%url 'events'%}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Events</a>
-                <a href="{%url 'communities'%}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Communities</a>
+                <a href="{% url 'landing' %}" class="text-lg font-semibold text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Home</a>
+                <a href="{% url 'displayTesti'%}" class="text-lg font-semibold text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Testimonials</a>
+                <a href="{%url 'events'%}" class="text-lg font-semibold text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Events</a>
+                <a href="{%url 'communities'%}" class="text-lg font-semibold text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Communities</a>
             </nav>
             <!-- nav - end -->
 
             <!-- buttons - start -->
-            <a href="{% url 'contact' %}" class="hidden rounded-lg bg-gray-200 dark:bg-gray-700 px-8 py-3 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 dark:hover:bg-gray-600 focus-visible:ring active:text-gray-700 dark:active:text-gray-400 md:text-base lg:inline-block">Contact Us</a>
+            <a href="{% url 'contact' %}" class="hidden rounded-lg bg-gray-700 px-8 py-3 text-center text-sm font-semibold text-gray-300 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-600 focus-visible:ring active:text-gray-400 md:text-base lg:inline-block">Contact Us</a>
 
-            <button type="button" id="menuButton" class="inline-flex items-center gap-2 rounded-lg bg-gray-200 dark:bg-gray-700 px-2.5 py-2 text-sm font-semibold text-gray-500 dark:text-gray-300 ring-indigo-300 hover:bg-gray-300 dark:hover:bg-gray-600 focus-visible:ring active:text-gray-700 dark:active:text-gray-400 md:text-base lg:hidden">
+            <button type="button" id="menuButton" class="inline-flex items-center gap-2 rounded-lg bg-gray-700 px-2.5 py-2 text-sm font-semibold text-gray-300 ring-indigo-300 hover:bg-gray-600 focus-visible:ring active:text-gray-400 md:text-base lg:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
                 </svg>

@@ -8,12 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-white dark:bg-gray-900 text-black dark:text-white">
+<body class="bg-gray-900 text-white">
     <div class="pb-6 sm:pb-8 lg:pb-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
             <header class="mb-8 flex items-center justify-between py-4 md:mb-12 md:py-8 xl:mb-16">
                 <!-- logo - start -->
-                <a href="/" class="inline-flex items-center gap-2.5 text-2xl font-bold text-black dark:text-white md:text-3xl" aria-label="logo">
+                <a href="/" class="inline-flex items-center gap-2.5 text-2xl font-bold text-white md:text-3xl" aria-label="logo">
                     <svg width="150" height="150" viewBox="0 0 1792 1792" class="h-auto w-6 text-indigo-500 relative top-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M1703 478q40 57 18 129l-275 906q-19 64-76.5 107.5T1247 1664H324q-77 0-148.5-53.5T76 1479q-24-67-2-127 0-4 3-27t4-37q1-8-3-21.5t-3-19.5q2-11 8-21t16.5-23.5T116 1179q23-38 45-91.5t30-91.5q3-10 .5-30t-.5-28q3-11 17-28t17-23q21-36 42-92t25-90q1-9-2.5-32t.5-28q4-13 22-30.5t22-22.5q19-26 42.5-84.5T404 411q1-8-3-25.5t-2-26.5q2-8 9-18t18-23 17-21q8-12 16.5-30.5t15-35 16-36 19.5-32 26.5-23.5 36-11.5T620 134l-1 3q38-9 51-9h761q74 0 114 56t18 130l-274 906q-36 119-71.5 153.5T1089 1408H220q-27 0-38 15-11 16-1 43 24 70 144 70h923q29 0 56-15.5t35-41.5l300-987q7-22 5-57 38 15 59 43zm-1064 2q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5T1311 480l21-64q4-13-2-22.5t-20-9.5H702q-13 0-25.5 9.5T660 416zm-83 256q-4 13 2 22.5t20 9.5h608q13 0 25.5-9.5T1228 736l21-64q4-13-2-22.5t-20-9.5H619q-13 0-25.5 9.5T577 672z"></path>
                     </svg>
@@ -24,16 +24,19 @@
                 <!-- nav - start -->
                 <nav class="hidden gap-12 lg:flex">
                     <a href="{% url 'landing' %}" class="text-lg font-semibold text-indigo-500">Home</a>
-                    <a href="{% url 'displayTesti' %}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Testimonials</a>
-                    <a href="{% url 'events' %}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Events</a>
-                    <a href="{% url 'communities' %}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Communities</a>
+                    <a href="{% url 'displayTesti' %}" class="text-lg font-semibold 
+                    text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Testimonials</a>
+                    <a href="{% url 'events' %}" class="text-lg font-semibold 
+                    text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Events</a>
+                    <a href="{% url 'communities' %}" class="text-lg font-semibold 
+                    text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Communities</a>
                 </nav>
                 <!-- nav - end -->
 
                 <!-- buttons - start -->
-                <a href="{% url 'contact' %}" class="hidden rounded-lg bg-gray-200 dark:bg-gray-700 px-8 py-3 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 dark:hover:bg-gray-600 focus-visible:ring active:text-gray-700 dark:active:text-gray-400 md:text-base lg:inline-block">Contact Us</a>
+                <a href="{% url 'contact' %}" class="hidden rounded-lg bg-gray-700 px-8 py-3 text-center text-sm font-semibold text-gray-300 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-600 focus-visible:ring active:text-gray-400 md:text-base lg:inline-block">Contact Us</a>
 
-                <button type="button" id="menuButton" class="inline-flex items-center gap-2 rounded-lg bg-gray-200 dark:bg-gray-700 px-2.5 py-2 text-sm font-semibold text-gray-500 dark:text-gray-300 ring-indigo-300 hover:bg-gray-300 dark:hover:bg-gray-600 focus-visible:ring active:text-gray-700 dark:active:text-gray-400 md:text-base lg:hidden">
+                <button type="button" id="menuButton" class="inline-flex items-center gap-2 rounded-lg bg-gray-700 px-2.5 py-2 text-sm font-semibold text-gray-300 ring-indigo-300 hover:bg-gray-600 focus-visible:ring active:text-gray-400 md:text-base lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
                     </svg>
@@ -62,13 +65,13 @@
             <section class="mb-8 flex flex-col justify-between gap-6 sm:gap-10 md:mb-16 md:gap-16 lg:flex-row">
                 <!-- content - start -->
                 <div class="flex flex-col justify-center sm:text-center lg:py-12 lg:text-left lg:h-200 xl:w-5/12">
-                    <h1 class="mb-8 text-4xl font-bold text-black dark:text-white sm:text-5xl md:mb-12 md:text-6xl">By the AI&DS for KKWIEER</h1>
+                    <h1 class="mb-8 text-4xl font-bold text-white sm:text-5xl md:mb-12 md:text-6xl">By the AI&DS for KKWIEER</h1>
                     <p class="mb-4 font-semibold text-indigo-500 md:mb-6 md:text-lg xl:text-xl">Powered by Phenonix Club</p>
                     <div class="flex flex-col gap-2.5 sm:flex-row sm:justify-center lg:justify-start">
                         <a href="{% url 'display' %}" class="inline-flex items-center justify-center rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">NOTES</a>
                         <a href="{% url 'gen' %}" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">LEARNING GPT</a>
                         <a href="{% url 'roadmapsview' %}" class="inline-flex items-center justify-center rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">ROADMAPS</a>
-                        <a href="#" class="inline-block rounded-lg bg-gray-200 dark:bg-gray-700 px-8 py-3 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 dark:hover:bg-gray-600 focus-visible:ring active:text-gray-700 dark:active:text-gray-400 md:text-base">...</a>
+                        <a href="#" class="inline-block rounded-lg bg-gray-700 px-8 py-3 text-center text-sm font-semibold text-gray-300 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-600 focus-visible:ring active:text-gray-400 md:text-base">...</a>
                     </div>
                 </div>
                 <!-- content - end -->
