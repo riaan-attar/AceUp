@@ -1,2 +1,2 @@
 buildpacks:
-  - name: python
+  - name: python-3.12.1
