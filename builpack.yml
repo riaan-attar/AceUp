@@ -1,2 +1,4 @@
 buildpacks:
-  - name: python-3.12.1
+  - name: python
+    config:
+      python_version: "3.12"  # Change to your desired version
