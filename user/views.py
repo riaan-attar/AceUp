@@ -9,7 +9,8 @@ from django.conf import settings
 from django.core.files.base import ContentFile
 import os# Create your views here.
 import markdown2
-
+from django.http import FileResponse
+from django.shortcuts import get_object_or_404, render
 def landing(request):
     doc = docs.objects.all()
     return render(request , "index.html",{"docs":doc})
@@ -68,12 +69,15 @@ def communities(request):
 
 def reader(request,pk):
 
-    file_link = notes.objects.get(id=pk)
-    file_l = file_link.url.name
-    filea= os.path.basename(file_l)
-    filea = 'notes/'+filea
-    file_l = static(filea)
-    return render(request,'reader.html',{"file":file_l})
+    # file_link = notes.objects.get(id=pk)
+    # file_l = file_link.url.name
+
+    file_link = get_object_or_404(notes, id=pk)
+    
+    # Serve the PDF file directly
+    response = FileResponse(file_link.url, content_type='application/pdf')
+    response['Content-Disposition'] = f'inline; filename="{file_link.url.name}"'
+    return response
 
 def docreader(request,pk):
     file_link = docs.objects.get(id=pk)

@@ -1,2 +1,2 @@
 {% load static %}
-<embed src="{{ file }}" width="100%" height="100%" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">
+<iframe src="{% url 'reader' pk=file_link.id %}" width="100%" height="100%" style="border: none;" allowfullscreen></iframe>
