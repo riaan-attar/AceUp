@@ -25,8 +25,8 @@ def gen(request):
         
         text = extracted_text
         print(extracted_text)
-        api_key = os.getenv("GOOGLE_API_KEY")
-        
+        # api_key = os.getenv("GOOGLE_API_KEY")
+        api_key = "AIzaSyBW5Cxl9693EfEKg_9SJ67inkoZbWYvPYs"
         try:
             genai.configure(api_key=api_key)
             

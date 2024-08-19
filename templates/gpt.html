@@ -109,11 +109,6 @@
           </div>
         </div>
       </div>
-      <!-- Chatbot interface - end -->
-      <!-- {% if generated_text %}
-                  <div>{{ generated_text }}</div>
-                  {% else %}<div></div>
-                  {% endif %} -->
       <script>
         const subjects = {
           first: ["Linear Algebra", "Physics", "Chemistry", "Fundamentals of Electronics", "Fundamentals of Electrical Engg.","Differential Equations & Integral Calculus","Programming in C","Computational Thinking"],
@@ -165,7 +160,6 @@
             success: function(response) {
              
               if(response.generated_text) {
-                  //let msg = marked.parse(response.generated_text)
                   appendMessage(`${response.generated_text}`);
               } else {
                   appendMessage(`Bot:"what the hell"`);
@@ -175,30 +169,30 @@
                 appendMessage(`Bot: Sorry, something went wrong.`);
             }
         });
+
+        // Clear the input field after submission
+        $('#question').val('');
     } else {
         appendMessage(`Bot: Please fill out all fields before submitting.`);
     }
 });
 
+function appendMessage(message, alignment = "text-left") {
+    const messageElement = document.createElement('div');
+    message = marked.parse(message)
+    messageElement.innerHTML = message;
+    messageElement.className = `mb-2 ${alignment}`;
+    chatbox.appendChild(messageElement);
+    chatbox.scrollTop = chatbox.scrollHeight;
+}
 
-        function appendMessage(message, alignment = "text-left") {
-          const messageElement = document.createElement('div');
-          message = marked.parse(message)
-          messageElement.innerHTML = message;
-          messageElement.className = `mb-2 ${alignment}`;
-          chatbox.appendChild(messageElement);
-          chatbox.scrollTop = chatbox.scrollHeight;
-        }
-      </script>
-      <script>
-        // JavaScript to handle the menu toggle
-        document.getElementById('menuButton').onclick = function () {
-            document.getElementById('sideMenu').classList.remove('translate-x-full');
-        }
+document.getElementById("question").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault(); // Prevent form submission
+    document.getElementById("sendButton").click(); // Trigger click event on "Send" button
+  }
+});
 
-        document.getElementById('closeMenuButton').onclick = function () {
-            document.getElementById('sideMenu').classList.add('translate-x-full');
-        }
     </script>
 </body>
 </html>

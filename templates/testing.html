@@ -5,37 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ACEUP HOME</title>
+    <meta name="keywords" content="AceUp,KKWIEER,KKW,ACEUPKKW,ACEUP KKWIEER,ACEUP, communities, clubs, events, testimonials, contact, technology, learning, development">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #heading {
+            visibility: hidden;
+        }
+    </style>
 </head>
-<body class="bg-white dark:bg-gray-900 text-black dark:text-white">
+
+<body class="bg-gray-900 text-white">
     <div class="pb-6 sm:pb-8 lg:pb-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
             <header class="mb-8 flex items-center justify-between py-4 md:mb-12 md:py-8 xl:mb-16">
                 <!-- logo - start -->
-                <a href="/" class="inline-flex items-center gap-2.5 text-2xl font-bold text-black dark:text-white md:text-3xl" aria-label="logo">
-                    <svg width="95" height="94" viewBox="0 0 95 94" class="h-auto w-6 text-indigo-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M96 0V47L48 94H0V47L48 0H96Z" />
-                    </svg>
-                    AceUp 
+                <a href="/" class="inline-flex items-center gap-2.5 text-2xl font-bold text-white md:text-3xl" aria-label="logo">
+                    <img src="{% static 'images/rocket.png' %}" width="150" height="150" class="h-auto w-6 relative top-1.4" alt="logo">
+                    <span>AceUp</span>
                 </a>
-                    
-                
                 <!-- logo - end -->
 
                 <!-- nav - start -->
                 <nav class="hidden gap-12 lg:flex">
-                    <a href="{%url 'landing'%}" class="text-lg font-semibold text-indigo-500">Home</a>
-                    <a href="{% url 'displayTesti'%}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Testimonials</a>
-                    <a href="{%url 'events'%}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Events</a>
-                    <a href="{% url 'communities'%}" class="text-lg font-semibold text-gray-600 dark:text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Communities</a>
+                    <a href="{% url 'landing' %}" class="text-lg font-semibold text-indigo-500">Home</a>
+                    <a href="{% url 'displayTesti' %}" class="text-lg font-semibold 
+                    text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Testimonials</a>
+                    <a href="{% url 'events' %}" class="text-lg font-semibold 
+                    text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Events</a>
+                    <a href="{% url 'communities' %}" class="text-lg font-semibold 
+                    text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Communities</a>
                 </nav>
                 <!-- nav - end -->
 
                 <!-- buttons - start -->
-                <a href="{% url 'contact' %}" class="hidden rounded-lg bg-gray-200 dark:bg-gray-700 px-8 py-3 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 dark:hover:bg-gray-600 focus-visible:ring active:text-gray-700 dark:active:text-gray-400 md:text-base lg:inline-block">Contact Us</a>
+                <a href="{% url 'contact' %}" class="hidden rounded-lg bg-gray-700 px-8 py-3 text-center text-sm font-semibold text-gray-300 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-600 focus-visible:ring active:text-gray-400 md:text-base lg:inline-block">Contact Us</a>
 
-                <button type="button" class="inline-flex items-center gap-2 rounded-lg bg-gray-200 dark:bg-gray-700 px-2.5 py-2 text-sm font-semibold text-gray-500 dark:text-gray-300 ring-indigo-300 hover:bg-gray-300 dark:hover:bg-gray-600 focus-visible:ring active:text-gray-700 dark:active:text-gray-400 md:text-base lg:hidden">
+                <button type="button" id="menuButton" class="inline-flex items-center gap-2 rounded-lg bg-gray-700 px-2.5 py-2 text-sm font-semibold text-gray-300 ring-indigo-300 hover:bg-gray-600 focus-visible:ring active:text-gray-400 md:text-base lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
                     </svg>
@@ -44,23 +50,33 @@
                 <!-- buttons - end -->
             </header>
 
+            <!-- Side Menu - start -->
+            <div id="sideMenu" class="fixed top-0 right-0 h-full w-64 bg-gray-800 text-white transform translate-x-full transition-transform duration-300 lg:hidden">
+                <button id="closeMenuButton" class="absolute top-4 right-4 text-gray-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <nav class="flex flex-col gap-4 p-8">
+                    <a href="{% url 'landing' %}" class="text-lg font-semibold text-indigo-500">Home</a>
+                    <a href="{% url 'displayTesti' %}" class="text-lg font-semibold text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Testimonials</a>
+                    <a href="{% url 'events' %}" class="text-lg font-semibold text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Events</a>
+                    <a href="{% url 'communities' %}" class="text-lg font-semibold text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Communities</a>
+                    <a href="{% url 'contact' %}" class="rounded-lg bg-gray-700 px-4 py-2 text-center text-sm font-semibold text-gray-300 transition duration-100 hover:bg-gray-600">Contact Us</a>
+                </nav>
+            </div>
+            <!-- Side Menu - end -->
+
             <section class="mb-8 flex flex-col justify-between gap-6 sm:gap-10 md:mb-16 md:gap-16 lg:flex-row">
                 <!-- content - start -->
                 <div class="flex flex-col justify-center sm:text-center lg:py-12 lg:text-left lg:h-200 xl:w-5/12">
-                    
-
-                    <h1 class="mb-8 text-4xl font-bold text-black dark:text-white sm:text-5xl md:mb-12 md:text-6xl">By the AI&DS for KKWIEER</h1>
+                    <h1 id="heading" class="mb-8 text-4xl font-bold text-white sm:text-5xl md:mb-12 md:text-6xl"></h1>
                     <p class="mb-4 font-semibold text-indigo-500 md:mb-6 md:text-lg xl:text-xl">Powered by Phenonix Club</p>
                     <div class="flex flex-col gap-2.5 sm:flex-row sm:justify-center lg:justify-start">
-                        <a href="{% url 'display' %}" class="inline-flex items-center justify-center rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">
-                            NOTES </a>
-                          
+                        <a href="{% url 'display' %}" class="inline-flex items-center justify-center rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">NOTES</a>
                         <a href="{% url 'gen' %}" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">LEARNING GPT</a>
-                        <a href="{%url 'roadmapsview'%}" class="inline-flex items-center justify-center rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"> ROADMAPS </a>
-
-                        <a href="#" class="inline-block rounded-lg bg-gray-200 dark:bg-gray-700 px-8 py-3 text-center text-sm font-semibold text-gray-500 dark:text-gray-300 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 dark:hover:bg-gray-600 focus-visible:ring active:text-gray-700 dark:active:text-gray-400 md:text-base">...</a>
-
-
+                        <a href="{% url 'roadmapsview' %}" class="inline-flex items-center justify-center rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">ROADMAPS</a>
+                        <a href="#" class="inline-block rounded-lg bg-gray-700 px-8 py-3 text-center text-sm font-semibold text-gray-300 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-600 focus-visible:ring active:text-gray-400 md:text-base">...</a>
                     </div>
                 </div>
                 <!-- content - end -->
@@ -70,20 +86,48 @@
                     <img src="{% static 'images/main2.svg' %}" loading="lazy" alt="Photo by Fakurian Design" class="max-h-1/2 max-w-3/4" />
                 </div>
                 <!-- image - end -->
-            </section>      
-            <section class="flex flex-col gap-4 border-t pt-8 lg:items-start lg:flex-row lg:gap-8">
+            </section>
+
+            <!-- <section class="flex flex-col gap-4 border-t pt-8 lg:items-start lg:flex-row lg:gap-8">
                 <!-- IMP DOC - start -->
                 <p class="mt-2 mb-4 font-semibold text-indigo-500 md:mb-6 md:text-lg xl:text-xl">Important Documents:</p>
                 <div class="flex flex-col gap-2.5 lg:flex-row">
-                {% for i in docs %}
-                    <a href="{% url 'docreader' pk=i.id %}" class="inline-flex items-center justify-start rounded-lg bg-indigo-500 px-8 py-3 text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">{{ i.title|upper }} 23-24 PATTERN</a>
-                {% endfor %}
+                    {% for i in docs %}
+                        <a href="{% url 'docreader' pk=i.id %}" class="inline-flex items-center justify-start rounded-lg bg-indigo-500 px-8 py-3 text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">{{ i.title|upper }} 23-24 PATTERN</a>
+                    {% endfor %}
                 </div>
-            </section>
-            
-            
-              
+            </section> -->
         </div>
     </div>
+
+    <script>
+        // JavaScript to handle the menu toggle
+        document.getElementById('menuButton').onclick = function () {
+            document.getElementById('sideMenu').classList.remove('translate-x-full');
+        }
+
+        document.getElementById('closeMenuButton').onclick = function () {
+            document.getElementById('sideMenu').classList.add('translate-x-full');
+        }
+    </script>
+    <script>
+        var i = 0;
+        var headingText = 'By the AI&DS for KKWIEER';
+        var speed = 30;
+        
+        function typeWriter() {
+            if (i < headingText.length) {
+                document.getElementById("heading").innerHTML += headingText.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+        
+        // Make the tag visible before starting the typewriter effect
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById("heading").style.visibility = 'visible';
+            typeWriter();
+        });
+        </script>
 </body>
 </html>
