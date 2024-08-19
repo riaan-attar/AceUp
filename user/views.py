@@ -80,12 +80,16 @@ def reader(request,pk):
     return response
 
 def docreader(request,pk):
-    file_link = docs.objects.get(id=pk)
-    file_l = file_link.url.name
-    filea= os.path.basename(file_l)
-    filea = 'docs/'+filea
-    file_l = static(filea)
-    return render(request,'reader.html',{"file":file_l})
+    file_link = get_object_or_404(docs,id=pk)
+    # file_link = docs.objects.get(id=pk)
+    # file_l = file_link.url.name
+    # filea= os.path.basename(file_l)
+    # filea = 'docs/'+filea
+    # file_l = static(filea)
+    # return render(request,'reader.html',{"file":file_l})
+    response = FileResponse(file_link.url, content_type='application/pdf')
+    response['Content-Disposition'] = f'inline; filename="{file_link.url.name}"'
+    return response
 
 def displayTesti(request):
     testi = testimonial.objects.all()
@@ -95,13 +99,16 @@ def contact(request):
     return render(request,'contact.html')
 
 def pdfreader(request,pk):
-    file_link = roadmaps.objects.get(id=pk)
-    file_l = file_link.url.name
-    filea= os.path.basename(file_l)
-    filea = 'roadmaps/'+filea
-    file_l = static(filea)
-    return render(request,'reader.html',{"file":file_l})
-
+    file_link = get_object_or_404(roadmaps,id=pk)
+    # file_link = roadmaps.objects.get(id=pk)
+    # file_l = file_link.url.name
+    # filea= os.path.basename(file_l)
+    # filea = 'roadmaps/'+filea
+    # file_l = static(filea)
+    # return render(request,'reader.html',{"file":file_l})
+    response = FileResponse(file_link.url,content_type='application/pdf')
+    response['Content-Disposition'] = f'inline; filename="{file_link.url.name}"'
+    return response
 def adddocs(request):
     if request.method == 'POST':
         # Check if files are present in the request
