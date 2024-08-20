@@ -26,7 +26,12 @@ SECRET_KEY = 'django-insecure-2974kg!@nw6v9tc7tp(8u2wgqpt5f*)*f&!dc4p=rj#750ekhc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.71.1','*']
+ALLOWED_HOSTS = ['192.168.71.1','*',
+    'www.aceup.line.pm',
+    'aceup.line.pm',  # Add other variants as needed
+    'localhost',
+    'https://www.aceup.line.pm',
+    '127.0.0.1','*']
 
 
 # Application definition
@@ -128,3 +133,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://www.aceup.line.pm',
+    'https://aceup.line.pm',
+    'http://www.aceup.line.pm',
+    'http://aceup.line.pm',
+    'www.aceup.line.pm',
+    'aceup.line.pm',  # Add other variants as needed
+]
