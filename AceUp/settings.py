@@ -139,6 +139,5 @@ CSRF_TRUSTED_ORIGINS = [
     'https://aceup.line.pm',
     'http://www.aceup.line.pm',
     'http://aceup.line.pm',
-    'www.aceup.line.pm',
-    'aceup.line.pm',  # Add other variants as needed
+      # Add other variants as needed
 ]

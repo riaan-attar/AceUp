@@ -21,7 +21,7 @@
             <header class="mb-8 flex items-center justify-between py-4 md:mb-12 md:py-8 xl:mb-16">
                 <!-- logo - start -->
                 <a href="/" class="inline-flex items-center gap-2.5 text-2xl font-bold text-white md:text-3xl" aria-label="logo">
-                    <img src="{% static 'images/rocket.png' %}" width="150" height="150" class="h-auto w-6 relative top-1.4" alt="logo">
+                    <lottie-player src="{% static 'images/logo.json' %}" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></lottie-player>
                     <span>AceUp</span>
                 </a>
                 <!-- logo - end -->
@@ -82,13 +82,26 @@
                 <!-- content - end -->
 
                 <!-- image - start -->
-                <div class="h-48 lg:h-96 xl:w-5/12 flex justify-center items-center overflow-hidden rounded-lg bg-transparent">
+                <!-- <div class="h-48 lg:h-96 xl:w-5/12 flex justify-center items-center overflow-hidden rounded-lg bg-transparent hover-effect">
                     <img src="{% static 'images/main2.svg' %}" loading="lazy" alt="Photo by Fakurian Design" class="max-h-1/2 max-w-3/4" />
+                </div> -->
+                <style>
+                    @media (min-width: 1280px) { /* Adjust the breakpoint as needed */
+                        .shift-left-desktop {
+                            margin-left: -120px; /* Adjust the value as needed */
+                        }
+                    }
+                </style>
+                
+                <div class="h-48 lg:h-96 xl:w-5/12 flex justify-center items-center overflow-hidden rounded-lg bg-transparent hover-effect">
+                    <img src="{% static 'images/main2.svg' %}" loading="lazy" alt="Photo by Fakurian Design" class="max-h-1/2 max-w-3/4 shift-left-desktop" />
                 </div>
+                
+                
                 <!-- image - end -->
             </section>
 
-            <!-- <section class="flex flex-col gap-4 border-t pt-8 lg:items-start lg:flex-row lg:gap-8">
+            <section class="flex flex-col gap-4 border-t pt-8 lg:items-start lg:flex-row lg:gap-8">
                 <!-- IMP DOC - start -->
                 <p class="mt-2 mb-4 font-semibold text-indigo-500 md:mb-6 md:text-lg xl:text-xl">Important Documents:</p>
                 <div class="flex flex-col gap-2.5 lg:flex-row">
@@ -96,7 +109,7 @@
                         <a href="{% url 'docreader' pk=i.id %}" class="inline-flex items-center justify-start rounded-lg bg-indigo-500 px-8 py-3 text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">{{ i.title|upper }} 23-24 PATTERN</a>
                     {% endfor %}
                 </div>
-            </section> -->
+            </section>
         </div>
     </div>
 
@@ -113,7 +126,7 @@
     <script>
         var i = 0;
         var headingText = 'By the AI&DS for KKWIEER';
-        var speed = 30;
+        var speed = 70;
         
         function typeWriter() {
             if (i < headingText.length) {

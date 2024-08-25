@@ -19,6 +19,12 @@ class testimonial(models.Model):
     git = models.URLField()
     linkdin = models.URLField()
 
+class pyqs(models.Model):
+    title = models.CharField(max_length=255)
+    year = models.IntegerField()
+    subject = models.CharField(max_length=100)
+    url = models.FileField(upload_to='satic/pyqs')
+    exam = models.CharField(max_length=100)
 class events(models.Model):
     title = models.CharField(max_length=255)
     date = models.DateField(null = True,blank=True)

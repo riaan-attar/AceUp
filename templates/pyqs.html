@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script> 
+    
+</head>
+<body class="bg-gray-900 text-white">
+  <div class="bg-gray-900 text-white pb-6 sm:pb-8 lg:pb-1">
+    <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+        <header class="mb-4 flex items-center justify-between py-2 md:py-4 xl:mb-2">
+
+            <!-- logo - start -->
+            <a href="/" class="inline-flex items-center gap-1 text-2xl font-bold text-white md:text-3xl" aria-label="logo" style="margin-left: -10px;">
+              <lottie-player src="{% static 'images/logo.json' %}" background="transparent" speed="1" style="width: 60px; height: 60px;" loop autoplay></lottie-player>
+              <span>AceUp</span>
+          </a>
+            <!-- logo - end -->
+
+            <!-- nav - start -->
+            <nav class="hidden gap-12 lg:flex">
+                <a href="{% url 'landing' %}" class="text-lg font-semibold \text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Home</a>
+                <a href="{% url 'displayTesti'%}" class="text-lg font-semibold \text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Testimonials</a>
+                <a href="{%url 'events'%}" class="text-lg font-semibold \text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Events</a>
+                <a href="{%url 'communities'%}" class="text-lg font-semibold \text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Communities</a>
+            </nav>
+            <!-- nav - end -->
+
+            <!-- buttons - start -->
+            <a href="{% url 'contact' %}" class="hidden rounded-lg bg-gray-700 px-8 py-3 text-center text-sm font-semibold text-gray-300 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-600 focus-visible:ring active:text-gray-400 md:text-base lg:inline-block">Contact Us</a>
+
+            <button type="button" id="menuButton" class="inline-flex items-center gap-2 rounded-lg bg-gray-700 px-2.5 py-2 text-sm font-semibold text-gray-300 ring-indigo-300 hover:bg-gray-600 focus-visible:ring active:text-gray-400 md:text-base lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+                </svg>
+                Menu
+            </button>
+            <!-- buttons - end -->
+             <!-- Side Menu - start -->
+            <div id="sideMenu" class="fixed top-0 right-0 h-full w-64 bg-gray-800 text-white transform translate-x-full transition-transform duration-300 lg:hidden">
+              <button id="closeMenuButton" class="absolute top-4 right-4 text-gray-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+              </button>
+              <nav class="flex flex-col gap-4 p-8">
+                  <a href="{% url 'landing' %}" class="text-lg font-semibold text-indigo-500">Home</a>
+                  <a href="{% url 'displayTesti' %}" class="text-lg font-semibold text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Testimonials</a>
+                  <a href="{% url 'events' %}" class="text-lg font-semibold text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Events</a>
+                  <a href="{% url 'communities' %}" class="text-lg font-semibold text-gray-300 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Communities</a>
+                  <a href="{% url 'contact' %}" class="rounded-lg bg-gray-700 px-4 py-2 text-center text-sm font-semibold text-gray-300 transition duration-100 hover:bg-gray-600">Contact Us</a>
+              </nav>
+          </div>
+          <!-- Side Menu - end -->
+        </header>
+    </div>
+</div>
+<div class="py-6 sm:py-4 lg:py-1">
+  <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+    
+    <!-- text - start -->
+    <div class="mb-10 md:mb-4">
+      <h2 class="mb-4 text-center text-2xl font-bold text-white md:mb-6 lg:text-3xl">PYQ's</h2>
+
+      <p class="mx-auto max-w-screen-md text-center text-gray-400 md:text-lg">Specially curated PYQ's for you, we are updating this section soon we will add more PYQ's ASAP.</p>
+    </div>
+    <!-- text - end -->
+    
+  </div>
+</div>
+<div class="bg-gray-900 text-white py-4 sm:py-6 lg:py-1">
+    <div class="mx-auto max-w-screen-2xl px-4 md:px-1">
+      <form method="GET"  id="chatbotForm" class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
+        <div>
+          <label for="year" class="mb-2 inline-block text-sm sm:text-base">Year*</label>
+          <select id="year" name="year" class="w-full rounded border bg-gray-800 px-3 py-2 text-white outline-none ring-indigo-500 transition duration-100 focus:ring">
+            <option value="">Select Year</option>
+            <option value="1">First</option>
+            <option value="2">Second</option>
+            <option value="3">Third</option>
+            <option value="4">Fourth</option>
+          </select>
+        </div>
+      
+        <div>
+          <label for="subject" class="mb-2 inline-block text-sm sm:text-base">Subject*</label>
+          <select id="subject" name="subject" class="w-full rounded border bg-gray-800 px-3 py-2 text-white outline-none ring-indigo-500 transition duration-100 focus:ring">
+            <option value="">Select Subject</option>
+            <!-- Subjects will be dynamically populated based on year selection -->
+          </select>
+        </div>
+      
+        <div class="col-span-2 flex justify-center lg:py-1">
+          <button type="submit" class="mt-2  w-1/2 rounded-lg bg-indigo-500 px-4 py-3 text-sm font-semibold text-white hover:bg-indigo-600">Search</button>
+        </div>
+      </form>
+      
+</div>
+</div>
+<!-- <form method="GET" class="mx-auto max-w-lg rounded-lg bg-gray-900">
+</form> -->
+<div class="bg-gray-900 py-6 sm:py-8 lg:py-4">
+  
+    <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+      {% for i in pyqs %}
+      <div class="flex flex-col items-center justify-between gap-4 rounded-lg bg-gray-800 p-4 sm:flex-row md:p-6">
+        <div>
+          <h2 class="text-xl font-bold text-indigo-400 md:text-2xl">{{i.title|upper}} </h2>
+          <p class="text-gray-300">SUB:<b> {{i.subject|upper}}</b>&emsp;|&emsp;YEAR:<b> {{i.year}}</b></p>
+        </div>
+        <a href="{% url 'reader' pk=i.id %}" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">VIEW</a>
+      </div>
+      <br>
+      {% endfor %}
+    </div>
+    
+  </div>
+  <script>
+    const subjects = {
+      1: ["Linear Algebra", "Physics", "Chemistry", "Fundamentals of Electronics", "Fundamentals of Electrical Engg.","Differential Equations & Integral Calculus","Programming in C","Computational Thinking","Engg. Drawing"],
+      2: ["JAVA", "Digital Electronics", "Object-Oriented Programming", "Computer Networks","Data Structures","Discrete Mathematics"],
+      3: ["Algorithms", "Operating Systems", "Database Management Systems","JAVA PRIMER"],
+      4: ["Software Engineering", "Artificial Intelligence", "Machine Learning", "Data Science"]
+    };
+  
+    document.getElementById('year').addEventListener('change', function() {
+      const year = this.value;
+      const subjectDropdown = document.getElementById('subject');
+      subjectDropdown.innerHTML = '<option value="">Select Subject</option>'; // Clear previous options
+      
+      if (subjects[year]) {
+        subjects[year].forEach(subject => {
+          const option = document.createElement('option');
+          option.value = subject;
+          option.textContent = subject;
+          subjectDropdown.appendChild(option);
+        });
+      }
+    });
+  </script>
+  <script>
+    // JavaScript to handle the menu toggle
+    document.getElementById('menuButton').onclick = function () {
+        document.getElementById('sideMenu').classList.remove('translate-x-full');
+    }
+
+    document.getElementById('closeMenuButton').onclick = function () {
+        document.getElementById('sideMenu').classList.add('translate-x-full');
+    }
+</script>
+</body>
+</html>

@@ -61,6 +61,36 @@ def noteEntry(request):
             return HttpResponse("Please fill all fields")
     return render(request, 'noteEntry.html')
 
+def pyqentry(request):
+    if request.method == 'POST':
+        # Check if files are present in the request
+        if 'pdf_files' in request.FILES:
+            files = request.FILES.getlist('pdf_files')
+            title = request.POST.get("title")
+            subject = request.POST.get("subject")
+            year = request.POST.get("year")
+            exam  = request.POST.get("exam")
+            
+            for file in files:
+                # Generate a file name and save the file
+                file_name = file.name
+                file_path = os.path.join(settings.MEDIA_ROOT, 'satic/pyqs/', file_name)
+
+                # Save file to the media directory
+                with default_storage.open(file_path, 'wb+') as destination:
+                    for chunk in file.chunks():
+                        destination.write(chunk)
+                
+                # Save file information in the database
+                pyqs.objects.create(
+                    title=title.upper(),
+                    url=file_path,
+                    subject = subject.upper(),
+                    year=year
+                )
+        else:
+            return HttpResponse("Please fill all fields")
+    return render(request, 'pyq.html')
 
 # Create your views here.
 # def noteEntry(request):
