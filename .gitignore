@@ -2,3 +2,9 @@
 .env
 /envv
 /venv
+AceUp/__pycache__
+admin/__pycache__
+learnGpt/__pycache__
+learnGpt/migrations
+user/__pycache__
+user/migrations
